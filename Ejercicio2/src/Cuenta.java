@@ -88,16 +88,4 @@ public abstract class Cuenta {
         System.out.println("El interes anual es del: " + this.annualRate + "%");
         System.out.println("La comision anual que se le aplica a la cuenta es del: " +this.monthlyCommission + "%" );
     }
-
-
-
-
-
-
-
-
-    /*  Extracto mensual: actualiza el saldo restándole la comisión mensual y calculando el interés mensual
-correspondiente (invoca el método anterior). */
-
-
 }

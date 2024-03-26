@@ -18,7 +18,7 @@ public class CuentaCorriente extends Cuenta{
     public void withdrawals(float takeout){
         if (takeout > balance){
             this.sobregiro = takeout - balance;
-            this.balance = 0; // Se establece el saldo en cero ya que se retirará más de lo que hay en la cuenta
+            this.balance = 0; // Se establece el saldo en cero ya que vamos a retirar más de lo que hay en la cuenta
             System.out.println("El saldo es: 0");
             System.out.println("El sobregiro es: " + this.sobregiro);
             numberWithdrawals += 1;
@@ -31,18 +31,18 @@ public class CuentaCorriente extends Cuenta{
     @Override
     public void consignMoney(float amount){
         if(this.sobregiro > 0){
-            // Si hay sobregiro, la cantidad consignada reduce el sobregiro
+            // Si hay sobregiro, la cantidad depositada reduce el sobregiro
             if (amount >= this.sobregiro) {
-                // Si la cantidad consignada es suficiente para cubrir completamente el sobregiro
-                amount -= this.sobregiro; // Reducimos la cantidad consignada por el monto del sobregiro
+                // Si la cantidad depositada es suficiente para cubrir completamente el sobregiro
+                amount -= this.sobregiro; // Reducimos la cantidad depositada por el monto del sobregiro
                 this.sobregiro = 0; // El sobregiro se establece en cero
-                this.balance += amount; // El saldo se incrementa con el resto de la cantidad consignada
+                this.balance += amount; // El saldo se incrementa con el resto de la cantidad depositada
             } else {
-                // Si la cantidad consignada no es suficiente para cubrir completamente el sobregiro
-                this.sobregiro -= amount; // Reducimos el sobregiro por el monto de la cantidad consignada
+                // Si la cantidad depositada no es suficiente para cubrir completamente el sobregiro
+                this.sobregiro -= amount; // Reducimos el sobregiro por el monto de la cantidad depositada
             }
         } else {
-            // Si no hay sobregiro, la cantidad consignada aumenta el saldo
+            // Si no hay sobregiro, la cantidad depositada aumenta el saldo
             this.balance += amount;
         }
         numberConsignments += 1;
@@ -61,5 +61,4 @@ public class CuentaCorriente extends Cuenta{
         System.out.println("Número total de transacciones realizadas: " + (this.numberWithdrawals + this.numberConsignments));
         System.out.println("Sobregiro: $" + sobregiro);
     }
-
 }
